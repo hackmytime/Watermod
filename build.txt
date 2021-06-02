@@ -1,4 +1,4 @@
-displayName = BossChallenge（BOSS挑战）
+displayName = Boss Challenge（BOSS挑战）
 author = Devil Slime
-version = 1.0.2
+version = 1.0.1
 homepage = https://twitter.com/Ezfic
