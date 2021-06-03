@@ -319,11 +319,11 @@ namespace Watermod.NPCs
             }
             if (Timer == 60)
             {
-                CombatText.NewText(new Rectangle((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height), color, GameCulture.Chinese.IsActive ? "等一等,这个前缀不给力": "Wait a minute, this prefix is not strong", true, false);
+                CombatText.NewText(new Rectangle((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height), color, GameCulture.Chinese.IsActive ? "等一等,这个前缀不给力": "this prefix is freaking stupid", true, false);
             }
             if (Timer == 120)
             {
-                CombatText.NewText(new Rectangle((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height), color, GameCulture.Chinese.IsActive ? "容我再重铸一下" : "Let me recast it again", true, false);
+                CombatText.NewText(new Rectangle((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height), color, GameCulture.Chinese.IsActive ? "容我再重铸一下" : "Let me Reforge a few times", true, false);
             }
             if (Timer >= 172 && Timer <= 180)
             {
@@ -332,30 +332,30 @@ namespace Watermod.NPCs
             }
             if (Timer == 180 && JJ==0)
             {
-                CombatText.NewText(new Rectangle((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height), new Color(55, 55, 55), (GameCulture.Chinese.IsActive ? "惹恼 " : "Annoyed ") + npc.FullName, true, false);
+                CombatText.NewText(new Rectangle((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height), new Color(55, 55, 55), (GameCulture.Chinese.IsActive ? "碎裂 " : "Broken ") + npc.FullName, true, false);
                 npc.rotation = 0;
                 npc.scale = 1;
-                Timer = 170;
+                Timer = 160;
                 JJ += 1;
             }
             if (Timer == 180 && JJ==1)
             {
-                CombatText.NewText(new Rectangle((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height), new Color(55, 55, 55), (GameCulture.Chinese.IsActive ? "粗劣 " : "Coarse ") + npc.FullName, true, false);
+                CombatText.NewText(new Rectangle((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height), new Color(55, 55, 55), (GameCulture.Chinese.IsActive ? "粗劣 " : "Shoddy ") + npc.FullName, true, false);
                 npc.rotation = 0;
-                Timer = 170;
+                Timer = 160;
                 JJ += 1;
             }
             if (Timer == 180 && JJ==2)
             {
-                CombatText.NewText(new Rectangle((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height), new Color(155, 155, 155), (GameCulture.Chinese.IsActive ? "微小 " : "Small ") + npc.FullName, true, false);
+                CombatText.NewText(new Rectangle((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height), new Color(155, 155, 155), (GameCulture.Chinese.IsActive ? "小 " : "Small ") + npc.FullName, true, false);
                 npc.rotation = 0;
                 npc.scale = 0.5f;
-                Timer = 170;
+                Timer = 160;
                 JJ += 1;
             }
             if (Timer == 180 && JJ==3)
             {
-                CombatText.NewText(new Rectangle((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height), color, (GameCulture.Chinese.IsActive ? "传奇 " : "Legend ") + npc.FullName, true, false);
+                CombatText.NewText(new Rectangle((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height), color, (GameCulture.Chinese.IsActive ? "传奇 " : "Legendary ") + npc.FullName, true, false);
                 npc.rotation = 0;
                 npc.scale = 1.25f;
                 JJ += 1;
@@ -555,7 +555,7 @@ namespace Watermod.NPCs
             }
             if (Timer == 60)
             {
-                CombatText.NewText(new Rectangle((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height), color, GameCulture.Chinese.IsActive ? "等等！": "and many more!", true, false);
+                CombatText.NewText(new Rectangle((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height), color, GameCulture.Chinese.IsActive ? "等等！": "Stop!", true, false);
             }
             if (Timer == 120)
             {
@@ -568,13 +568,13 @@ namespace Watermod.NPCs
             }
             if(Timer == 180)
             {
-                CombatText.NewText(new Rectangle((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height), new Color(155, 155, 155), (GameCulture.Chinese.IsActive ? "小 " : "Small ") + npc.FullName, true, false);
+                CombatText.NewText(new Rectangle((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height), new Color(155, 155, 155), (GameCulture.Chinese.IsActive ? "微小 " : "Tiny ") + npc.FullName, true, false);
                 npc.scale = 0.8f;
                 npc.rotation = 0;
             }
             if(Timer == 240)
             {
-                CombatText.NewText(new Rectangle((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height), color, GameCulture.Chinese.IsActive ? "额,不对!" : "Uh, that's not right!", true, false);
+                CombatText.NewText(new Rectangle((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height), color, GameCulture.Chinese.IsActive ? "呃,不对!" : "Uh, that's not right!", true, false);
             }
             if (Timer >= 292 && Timer <= 300)
             {
@@ -583,7 +583,7 @@ namespace Watermod.NPCs
             }
             if (Timer == 300)
             {
-                CombatText.NewText(new Rectangle((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height), new Color(70, 70, 70), (GameCulture.Chinese.IsActive ? "破碎的 " : "shattered ") + npc.FullName, true, false);
+                CombatText.NewText(new Rectangle((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height), new Color(70, 70, 70), (GameCulture.Chinese.IsActive ? "破损 " : "Damaged ") + npc.FullName, true, false);
                 npc.rotation = 0;
             }
             if(Timer == 360)
@@ -598,7 +598,7 @@ namespace Watermod.NPCs
             }
             if (Timer == 420)
             {
-                CombatText.NewText(new Rectangle((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height), color, (GameCulture.Chinese.IsActive ? "传奇 " : "Legend ") + npc.FullName, true, false);
+                CombatText.NewText(new Rectangle((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height), color, (GameCulture.Chinese.IsActive ? "传奇 " : "Legendary ") + npc.FullName, true, false);
                 npc.scale = 1.25f;
                 npc.damage = (int)(npc.damage *1.2f);
                 npc.rotation = 0;
@@ -610,14 +610,14 @@ namespace Watermod.NPCs
             }
             if (Timer == 480)
             {
-                CombatText.NewText(new Rectangle((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height), color, (GameCulture.Chinese.IsActive ? "巨大 " : "Huge") + npc.FullName, true, false);
+                CombatText.NewText(new Rectangle((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height), color, (GameCulture.Chinese.IsActive ? "巨大 " : "Massive ") + npc.FullName, true, false);
                 npc.scale = 1.5f;
                 npc.damage = (int)(npc.damage *1.2f);
                 npc.rotation = 0;
             }
             if (Timer == 540)
             {
-                CombatText.NewText(new Rectangle((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height), color, (GameCulture.Chinese.IsActive ? "呃啊啊啊,算了" : "Uh ah ah, forget it"), true, false);
+                CombatText.NewText(new Rectangle((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height), color, (GameCulture.Chinese.IsActive ? "呃啊啊啊,算了" : "Uh ah ah, Forget it!"), true, false);
             }
             if (Timer == 600)
             {
@@ -764,7 +764,7 @@ namespace Watermod.NPCs
             Color color = new Color(208, 86, 201);
             if (Timer == 60)
             {
-                CombatText.NewText(new Rectangle((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height), color, GameCulture.Chinese.IsActive ? "泰拉人,我就在你头上" : "Tyra, I'm on your head", true, false);
+                CombatText.NewText(new Rectangle((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height), color, GameCulture.Chinese.IsActive ? "泰拉人,我就在你头上" : "Terrarian, I'm on your head", true, false);
             }
             if (Timer == 120)
             {
@@ -820,7 +820,7 @@ namespace Watermod.NPCs
             if (Timer == 2200)
             {
                 Timer2 = 0;
-                CombatText.NewText(new Rectangle((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height), color, (GameCulture.Chinese.IsActive ? "针布戳,还有最后一段,小心了!." : "That's great, there is the last paragraph, be careful!"), true, false);
+                CombatText.NewText(new Rectangle((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height), color, (GameCulture.Chinese.IsActive ? "针布戳,还有最后一段,小心了!." : "well done，the epilogue is coming!"), true, false);
             }
             if (Timer >= 2300 && Timer <= 3900)
             {

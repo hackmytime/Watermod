@@ -182,7 +182,7 @@ namespace Watermod.NPCs
 					}
 					if (Timer5 == 200)
 					{
-						CombatText.NewText(new Rectangle((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height), new Color(255, 255, 255), Language.GetTextValue(GameCulture.Chinese.IsActive ? "300秒够吗？" : "Is 300 seconds enough?"), true, false);
+						CombatText.NewText(new Rectangle((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height), new Color(255, 255, 255), Language.GetTextValue(GameCulture.Chinese.IsActive ? "300秒够吗？" : "300 seconds should be enough"), true, false);
 					}
 					if (Timer5 == 300)
 					{
@@ -206,11 +206,11 @@ namespace Watermod.NPCs
 					}
 					if (Timer5 == 100)
 					{
-						CombatText.NewText(new Rectangle((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height), new Color(255, 255, 255), Language.GetTextValue(GameCulture.Chinese.IsActive ? "呃啊,我没有史莱姆亡": "Uh, I didn't have any slimes dead(King slime)"), true, false);
+						CombatText.NewText(new Rectangle((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height), new Color(255, 255, 255), Language.GetTextValue(GameCulture.Chinese.IsActive ? "呃啊,我没有史莱姆亡": "Uh, I have no dead Slime (Slimy Saddle)"), true, false);
 					}
 					if (Timer5 == 200)
 					{
-						CombatText.NewText(new Rectangle((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height), new Color(255, 255, 255), Language.GetTextValue(GameCulture.Chinese.IsActive ? "我还以为我有史莱姆亡" : "I thought I had a slime dead(King slime)"), true, false);
+						CombatText.NewText(new Rectangle((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height), new Color(255, 255, 255), Language.GetTextValue(GameCulture.Chinese.IsActive ? "我还以为我有史莱姆亡" : "I thought I had a dead Slime (Slimy Saddle)"), true, false);
 					}
 					if (Timer5 == 300)
 					{
@@ -222,7 +222,7 @@ namespace Watermod.NPCs
 					}
 					if (Timer5 == 500)
 					{
-						CombatText.NewText(new Rectangle((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height), new Color(255, 255, 255), Language.GetTextValue(GameCulture.Chinese.IsActive ? "可以庄心的召唤这个佝偻头" : "You can call this rickety head solemnly"), true, false);
+						CombatText.NewText(new Rectangle((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height), new Color(255, 255, 255), Language.GetTextValue(GameCulture.Chinese.IsActive ? "可以庄心的召唤这个佝偻头" : "You can summon this rickety head solemnly"), true, false);
 					}
 					if (Timer5 == 600)
 					{
