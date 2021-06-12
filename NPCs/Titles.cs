@@ -13,7 +13,7 @@ namespace Watermod.NPCs
     {
         public override void AI(NPC npc)
         {
-			if (!NPC.AnyNPCs(ModContent.NPCType<诅咒邪锤>()))
+			if (!NPC.AnyNPCs(ModContent.NPCType<诅咒邪锤.诅咒邪锤>()))
 			{
 				WaterWorld.恐惧 = false;
 				WaterWorld.恐惧2 = false;
