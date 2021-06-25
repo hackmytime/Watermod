@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -27,6 +28,8 @@ namespace Watermod.NPCs
         {
 			player.ManageSpecialBiomeVisuals("锤", WaterWorld.恐惧);
 			player.ManageSpecialBiomeVisuals("邪锤", WaterWorld.恐惧2);
+			//NPC spirit =Main.npc[NPC.FindFirstNPC(ModContent.NPCType<Ezfic.Ezfic>())];
+			player.ManageSpecialBiomeVisuals("星星", NPC.AnyNPCs(ModContent.NPCType<Ezfic.Ezfic>())/* && spirit.ai[1] != 0f*/);
 		}
 		public override void ResetEffects()
 		{

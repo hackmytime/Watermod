@@ -140,6 +140,7 @@ namespace Watermod.NPCs.Ezfic
 			npc.lifeMax = (int)(npc.lifeMax * 1f * bossLifeScale);
 			npc.damage = (int)(npc.damage * 1f);
 		}
+		int attack1Dla = 1200;
 		public override void AI()
 		{
 			npc.TargetClosest();
@@ -149,6 +150,25 @@ namespace Watermod.NPCs.Ezfic
 			direction.Normalize();
 			direction.X *= 14f;
 			direction.Y *= 14f;
+
+			/*if (attack1Dla >= 0)
+			{
+				attack1Dla--;
+				//limiting circle
+				if (attack1Dla % 15 == 0)
+				{
+					for (int i = 1; i <= 560; i++)
+					{
+						Vector2 position = npc.Center;
+						float r = i / 280f * MathHelper.Pi;
+						Vector2 Range = new Vector2(position.X + (float)Math.Cos(r) * 600f, position.Y + (float)Math.Sin(r) * 600f);
+						Color G = new Color((int)(255 * (1 - attack1Dla / 120f)), 0, 0);
+						Dust dust = Dust.NewDustPerfect(Range, 263, new Vector2(0f, 0f), 0,G, 2.302632f);
+						dust.noGravity = true;
+					}
+				}
+				return;
+			}*/
 			if (Da <= 1000)
 			{
 				Da += 15;

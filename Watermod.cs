@@ -14,12 +14,16 @@ namespace Watermod
 {
     public class Watermod : Mod
     {
+        internal static object Instance2;
+
         public override void Load()
         {
             Filters.Scene["锤"] = new Filter(new 染色体("FilterMiniTower").UseColor(new Color(208, 86, 201)).UseOpacity(0.8f), EffectPriority.VeryHigh);
             SkyManager.Instance["锤"] = new 染色体全景();
             Filters.Scene["邪锤"] = new Filter(new 染色体("FilterMiniTower").UseColor(new Color(208, 86, 201)).UseOpacity(1.5f), EffectPriority.VeryHigh);
             SkyManager.Instance["邪锤"] = new 染色体全景();
+            SkyManager.Instance["星星"] = new WSky();
+            Filters.Scene["星星"] = new Filter(new WScreenShaderData("FilterMiniTower").UseColor(0, 0f, 0).UseOpacity(0.5f), (EffectPriority)2);
         }
         public static void ShowTitle(NPC npc, int ID)
         {
