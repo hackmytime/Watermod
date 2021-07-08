@@ -73,7 +73,7 @@ namespace Watermod.NPCs.诅咒邪锤
 			}
 			num /= array.Length;
 			float num2 = 0.75f;
-			LaserLength = MathHelper.Lerp(LaserLength, 20000, num2);
+			LaserLength = MathHelper.Lerp(LaserLength, 7000, num2);
 			projectile.ai[0] += 1f;
 		}
 		public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)

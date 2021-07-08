@@ -149,8 +149,8 @@ namespace Watermod.NPCs.诅咒邪锤
             Player player = Main.player[npc.target];
             int H = Utils.SelectRandom(Main.rand, new int[]
             {
-                Main.rand.Next(200,400),
-                Main.rand.Next(-400,-200)
+                Main.rand.Next(500,800),
+                Main.rand.Next(-800,-500)
             });
             if (Timer < 60)
             {
@@ -255,20 +255,6 @@ namespace Watermod.NPCs.诅咒邪锤
                 }
                 npc.position.X = player.Center.X + H;
                 npc.position.Y = player.Center.Y + H;
-            }
-            if(Timer < 300)
-            {
-                Timer4++;
-                if (Timer4 >= 5)
-                {
-                    Timer4 = 0;
-                    float P = 0.783f;
-                    double O = Math.Atan2(Main.rand.Next(-15, 15), Main.rand.Next(-15, 15)) - P / 2f;
-                    double U = P / 8f;
-                    float B = 5;
-                    double M = O + U * (3 + 3 * 3) / 2.0 + 32f * 3;
-                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, (float)(Math.Sin(M) * B), (float)(Math.Cos(M) * B), ModContent.ProjectileType<诅咒锤>(), 100, 1f, 0, 0, 2);
-                }
             }
             if (Timer > 300 && Timer < 800)
             {
@@ -591,12 +577,12 @@ namespace Watermod.NPCs.诅咒邪锤
             {
                 Vector2 direction = Main.player[npc.target].Center-npc.Center;
                 direction.Normalize();
-                E = (float)Math.Atan2(direction.Y, direction.X);
-                npc.rotation = npc.rotation+E;
+                E += 0.5f;
+                npc.rotation = E;
                 Timer2 ++;
                 if (Timer2 % 30==1)
                 {
-                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, (float)Math.Cos(npc.rotation - 0.785), (float)Math.Sin(npc.rotation - 0.785), ModContent.ProjectileType<诅咒激光>(), 100, 1f, 0, 2);
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, (float)Math.Cos(npc.rotation - 0.785)*0.1f, (float)Math.Sin(npc.rotation - 0.785) * 0.1f, ModContent.ProjectileType<激光提示>(), 100, 1f, 0, 2);
                 }
             }
             if (Timer == 1500)
@@ -886,13 +872,13 @@ namespace Watermod.NPCs.诅咒邪锤
             }
             if (Timer >= 1100 && Timer <= 2100)
             {
-                if (Timer2 >= 90)
+                if (Timer2 >= 80)
                 {
                     Timer2 = 0;
                     float P = 0.783f;
                     double U = P / 8f;
                     float B = 5;
-                    for (int i = 0; i < 5; i++)
+                    for (int i = 0; i < 3; i++)
                     {
                         double M = U * (i + i * i) / 2.0 + 32f * i;
                         Projectile.NewProjectile(player.position.X - 1000, player.position.Y - Main.rand.Next(-500, 500), Main.rand.Next(3, 6), (float)(Math.Cos(M) * B), ModContent.ProjectileType<诅咒锤>(), 100, 1f, 0);
@@ -909,7 +895,7 @@ namespace Watermod.NPCs.诅咒邪锤
             }
             if (Timer >= 2300 && Timer <= 3900)
             {
-                if (Timer2 >= 90)
+                if (Timer2 >= 80)
                 {
                     Timer2 = 0;
                     Projectile.NewProjectile(player.position.X - 1000, player.position.Y - Main.rand.Next(-500, 500), Main.rand.Next(3, 6), 0, ModContent.ProjectileType<诅咒锤>(), 100, 1, 0);
@@ -917,13 +903,13 @@ namespace Watermod.NPCs.诅咒邪锤
                     Projectile.NewProjectile(player.position.X + 1000, player.position.Y - Main.rand.Next(-500, 500), Main.rand.Next(-6, -3), 0, ModContent.ProjectileType<诅咒锤>(), 100, 1, 0);
                     Projectile.NewProjectile(player.position.X - Main.rand.Next(-500, 500), player.position.Y + 1000, 0, Main.rand.Next(-6, -3), ModContent.ProjectileType<诅咒锤>(), 100, 1, 0);
                 }
-                if (Timer3 >= 150)
+                if (Timer3 >= 120)
                 {
                     Timer3 = 0;
                     float P = 0.783f;
                     double U = P / 8f;
                     float B = 5;
-                    for (int i = 0; i < 5; i++)
+                    for (int i = 0; i < 3; i++)
                     {
                         double M = U * (i + i * i) / 2.0 + 32f * i;
                         Projectile.NewProjectile(player.position.X - 1000, player.position.Y - Main.rand.Next(-500, 500), Main.rand.Next(3, 6), (float)(Math.Cos(M) * B), ModContent.ProjectileType<诅咒锤>(), 100, 1f, 0);
@@ -966,7 +952,7 @@ namespace Watermod.NPCs.诅咒邪锤
                 {
                     for (int A = 0; A < 50; A++)
                     {
-                        Dust.NewDust(npc.position + npc.velocity, npc.width, npc.height, 173, npc.velocity.X * 0.5f, npc.velocity.Y * 0.5f);
+                        Dust.NewDust(npc.position + npc.velocity, npc.width, npc.height, DustID.ShadowbeamStaff, npc.velocity.X * 0.5f, npc.velocity.Y * 0.5f);
                     }
                     npc.position.X = player.Center.X + H;
                     npc.position.Y = player.Center.Y + H;
@@ -1041,9 +1027,11 @@ namespace Watermod.NPCs.诅咒邪锤
             if (npc.ai[0] == 120)
             {
                 CombatText.NewText(new Rectangle((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height), color, (GameCulture.Chinese.IsActive ? "但这还不够！！！." : "But that is just not enough!"), true, false);
-                Projectile.NewProjectile(npc.Center.X - 2500, npc.Center.Y + 10000, 0, -1, ModContent.ProjectileType<巨大诅咒激光>(), 100, 1, 0);
-                Projectile.NewProjectile(npc.Center.X, npc.Center.Y-250, 0, -1, ModContent.ProjectileType<巨大诅咒激光>(), 100, 1, 0);
-                Projectile.NewProjectile(npc.Center.X + 2500, npc.Center.Y + 10000, 0, -1, ModContent.ProjectileType<巨大诅咒激光>(), 100, 1, 0);
+                Projectile.NewProjectile(npc.Center.X - 2500, npc.Center.Y + 10000, 0, -1, ModContent.ProjectileType<巨大诅咒激光>(), 10000, 1, 0);
+                Projectile.NewProjectile(npc.Center.X, npc.Center.Y-250, 0, -1, ModContent.ProjectileType<巨大诅咒激光>(), 10000, 1, 0);
+                Projectile.NewProjectile(npc.Center.X + 2500, npc.Center.Y + 10000, 0, -1, ModContent.ProjectileType<巨大诅咒激光>(), 10000, 1, 0);
+                Projectile.NewProjectile(npc.Center.X + 2500, npc.Center.Y - 2500, -1, 0, ModContent.ProjectileType<巨大诅咒激光>(), 10000, 1, 0);
+                Projectile.NewProjectile(npc.Center.X + 2500, npc.Center.Y + 2500, -1, 0, ModContent.ProjectileType<巨大诅咒激光>(), 10000, 1, 0);
             }
             if (npc.ai[0] == 180)
             {
@@ -1055,27 +1043,27 @@ namespace Watermod.NPCs.诅咒邪锤
             }
             if (npc.ai[0] == 300)
             {
-                Projectile.NewProjectile(npc.Center.X-250, Main.maxTilesY + 600, 0, 1, ModContent.ProjectileType<激光提示>(), 100, 1, 0);
-                Projectile.NewProjectile(npc.Center.X+250, Main.maxTilesY + 600, 0, 1, ModContent.ProjectileType<激光提示>(), 100, 1, 0);
-                Projectile.NewProjectile(npc.Center.X-500, Main.maxTilesY + 600, 0, 1, ModContent.ProjectileType<激光提示>(), 100, 1, 0);
-                Projectile.NewProjectile(npc.Center.X+500, Main.maxTilesY + 600, 0, 1, ModContent.ProjectileType<激光提示>(), 100, 1, 0);
-                Projectile.NewProjectile(npc.Center.X+500, Main.maxTilesY + 600, 0, 1, ModContent.ProjectileType<激光提示>(), 100, 1, 0);
-                Projectile.NewProjectile(npc.Center.X-750, Main.maxTilesY + 600, 0, 1, ModContent.ProjectileType<激光提示>(), 100, 1, 0);
-                Projectile.NewProjectile(npc.Center.X+750, Main.maxTilesY + 600, 0, 1, ModContent.ProjectileType<激光提示>(), 100, 1, 0);
-                Projectile.NewProjectile(npc.Center.X-1000, Main.maxTilesY + 600, 0, 1, ModContent.ProjectileType<激光提示>(), 100, 1, 0);
-                Projectile.NewProjectile(npc.Center.X+1000, Main.maxTilesY + 600, 0, 1, ModContent.ProjectileType<激光提示>(), 100, 1, 0);
-                Projectile.NewProjectile(npc.Center.X-1250, Main.maxTilesY + 600, 0, 1, ModContent.ProjectileType<激光提示>(), 100, 1, 0);
-                Projectile.NewProjectile(npc.Center.X+1250, Main.maxTilesY + 600, 0, 1, ModContent.ProjectileType<激光提示>(), 100, 1, 0);
-                Projectile.NewProjectile(npc.Center.X-1500, Main.maxTilesY + 600, 0, 1, ModContent.ProjectileType<激光提示>(), 100, 1, 0);
-                Projectile.NewProjectile(npc.Center.X+1500, Main.maxTilesY + 600, 0, 1, ModContent.ProjectileType<激光提示>(), 100, 1, 0);
-                Projectile.NewProjectile(npc.Center.X-1750, Main.maxTilesY + 600, 0, 1, ModContent.ProjectileType<激光提示>(), 100, 1, 0);
-                Projectile.NewProjectile(npc.Center.X+1750, Main.maxTilesY + 600, 0, 1, ModContent.ProjectileType<激光提示>(), 100, 1, 0);
-                Projectile.NewProjectile(npc.Center.X-2000, Main.maxTilesY + 600, 0, 1, ModContent.ProjectileType<激光提示>(), 100, 1, 0);
-                Projectile.NewProjectile(npc.Center.X+2000, Main.maxTilesY + 600, 0, 1, ModContent.ProjectileType<激光提示>(), 100, 1, 0);
-                Projectile.NewProjectile(npc.Center.X-2250, Main.maxTilesY + 600, 0, 1, ModContent.ProjectileType<激光提示>(), 100, 1, 0);
-                Projectile.NewProjectile(npc.Center.X+2250, Main.maxTilesY + 600, 0, 1, ModContent.ProjectileType<激光提示>(), 100, 1, 0);
-                Projectile.NewProjectile(npc.Center.X-2500, Main.maxTilesY + 600, 0, 1, ModContent.ProjectileType<激光提示>(), 100, 1, 0);
-                Projectile.NewProjectile(npc.Center.X+2500, Main.maxTilesY + 600, 0, 1, ModContent.ProjectileType<激光提示>(), 100, 1, 0);
+                Projectile.NewProjectile(npc.Center.X-250, p.Center.Y - 1000, 0, 1, ModContent.ProjectileType<激光提示>(), 100, 1, 0);
+                Projectile.NewProjectile(npc.Center.X+250, p.Center.Y - 1000, 0, 1, ModContent.ProjectileType<激光提示>(), 100, 1, 0);
+                Projectile.NewProjectile(npc.Center.X-500, p.Center.Y - 1000, 0, 1, ModContent.ProjectileType<激光提示>(), 100, 1, 0);
+                Projectile.NewProjectile(npc.Center.X+500, p.Center.Y - 1000, 0, 1, ModContent.ProjectileType<激光提示>(), 100, 1, 0);
+                Projectile.NewProjectile(npc.Center.X+500, p.Center.Y - 1000, 0, 1, ModContent.ProjectileType<激光提示>(), 100, 1, 0);
+                Projectile.NewProjectile(npc.Center.X-750, p.Center.Y - 1000, 0, 1, ModContent.ProjectileType<激光提示>(), 100, 1, 0);
+                Projectile.NewProjectile(npc.Center.X+750, p.Center.Y - 1000, 0, 1, ModContent.ProjectileType<激光提示>(), 100, 1, 0);
+                Projectile.NewProjectile(npc.Center.X-1000, p.Center.Y - 1000, 0, 1, ModContent.ProjectileType<激光提示>(), 100, 1, 0);
+                Projectile.NewProjectile(npc.Center.X+1000, p.Center.Y - 1000, 0, 1, ModContent.ProjectileType<激光提示>(), 100, 1, 0);
+                Projectile.NewProjectile(npc.Center.X-1250, p.Center.Y - 1000, 0, 1, ModContent.ProjectileType<激光提示>(), 100, 1, 0);
+                Projectile.NewProjectile(npc.Center.X+1250, p.Center.Y - 1000, 0, 1, ModContent.ProjectileType<激光提示>(), 100, 1, 0);
+                Projectile.NewProjectile(npc.Center.X-1500, p.Center.Y - 1000, 0, 1, ModContent.ProjectileType<激光提示>(), 100, 1, 0);
+                Projectile.NewProjectile(npc.Center.X+1500, p.Center.Y - 1000, 0, 1, ModContent.ProjectileType<激光提示>(), 100, 1, 0);
+                Projectile.NewProjectile(npc.Center.X-1750, p.Center.Y - 1000, 0, 1, ModContent.ProjectileType<激光提示>(), 100, 1, 0);
+                Projectile.NewProjectile(npc.Center.X+1750, p.Center.Y - 1000, 0, 1, ModContent.ProjectileType<激光提示>(), 100, 1, 0);
+                Projectile.NewProjectile(npc.Center.X-2000, p.Center.Y - 1000, 0, 1, ModContent.ProjectileType<激光提示>(), 100, 1, 0);
+                Projectile.NewProjectile(npc.Center.X+2000, p.Center.Y - 1000, 0, 1, ModContent.ProjectileType<激光提示>(), 100, 1, 0);
+                Projectile.NewProjectile(npc.Center.X-2250, p.Center.Y - 1000, 0, 1, ModContent.ProjectileType<激光提示>(), 100, 1, 0);
+                Projectile.NewProjectile(npc.Center.X+2250, p.Center.Y - 1000, 0, 1, ModContent.ProjectileType<激光提示>(), 100, 1, 0);
+                Projectile.NewProjectile(npc.Center.X-2500, p.Center.Y - 1000, 0, 1, ModContent.ProjectileType<激光提示>(), 100, 1, 0);
+                Projectile.NewProjectile(npc.Center.X+2500, p.Center.Y - 1000, 0, 1, ModContent.ProjectileType<激光提示>(), 100, 1, 0);
             }
             if (npc.ai[0] > 400&&npc.ai[0]<1200)
             {
@@ -1084,7 +1072,7 @@ namespace Watermod.NPCs.诅咒邪锤
                 {
                     for(int K=0;K<20;K++)
                     {
-                       Projectile.NewProjectile(npc.Center.X+Main.rand.Next(-2500, 2500), 10, 0, 1, ModContent.ProjectileType<激光提示>(), 100, 1, 0);
+                       Projectile.NewProjectile(npc.Center.X+Main.rand.Next(-2500, 2500), p.Center.Y - 1000, 0, 1, ModContent.ProjectileType<激光提示>(), 100, 1, 0);
                     }
                 }
             }
@@ -1100,8 +1088,8 @@ namespace Watermod.NPCs.诅咒邪锤
                 {
                     for (int K = 0; K < 15; K++)
                     {
-                        Projectile.NewProjectile(npc.Center.X + Main.rand.Next(-2500, 2500), Main.maxTilesY + 600, 0, 1, ModContent.ProjectileType<激光提示>(), 100, 1, 0,0,1);
-                        Projectile.NewProjectile(npc.Center.X + Main.rand.Next(-2500, 2500), Main.maxTilesY + 600, 0, 1, ModContent.ProjectileType<激光提示>(), 100, 1, 0,0,1);
+                        Projectile.NewProjectile(npc.Center.X + Main.rand.Next(-2500, 2500), p.Center.Y - 1000, 0, 1, ModContent.ProjectileType<激光提示>(), 100, 1, 0,0,1);
+                        Projectile.NewProjectile(npc.Center.X-2500, p.Center.Y + Main.rand.Next(-2500, 2500), 1, 0, ModContent.ProjectileType<激光提示>(), 100, 1, 0,0,1);
                     }
                 }
             }
@@ -1117,18 +1105,17 @@ namespace Watermod.NPCs.诅咒邪锤
 
             if (npc.ai[0] >= 2200 && npc.ai[0] < 3000)
             {
+                npc.ai[1]++;
                 if (npc.ai[1] % 100 == 1)
                 {
                     float P = 0.783f;
                     double U = P / 8f;
                     float B = 5;
-                    for (int i = 0; i < 8; i++)
+                    for (int i = 0; i < 15; i++)
                     {
                         double M = U * (i + i * i) / 2.0 + 32f * i;
-                        Projectile.NewProjectile(npc.Center.X - 2500, npc.Center.Y - Main.rand.Next(-2500, 2500), Main.rand.Next(3, 6), (float)(Math.Cos(M) * B), ModContent.ProjectileType<激光提示>(), 100, 1f, 0, 0, 1);
-                        Projectile.NewProjectile(npc.Center.X - Main.rand.Next(-2500, 2500), npc.Center.X - 2500, (float)(Math.Sin(M) * B), Main.rand.Next(3, 6), ModContent.ProjectileType<激光提示>(), 100, 1f, 0, 0, 1);
-                        Projectile.NewProjectile(npc.Center.X + 2500, npc.Center.Y - Main.rand.Next(-2500, 2500), Main.rand.Next(-6, -3), (float)(Math.Cos(M) * B), ModContent.ProjectileType<激光提示>(), 100, 1f, 0, 0, 1);
-                        Projectile.NewProjectile(npc.Center.X - Main.rand.Next(-2500, 2500), npc.Center.X + 2500, (float)(Math.Sin(M) * B), Main.rand.Next(-6, -3), ModContent.ProjectileType<激光提示>(), 100, 1f, 0, 0, 1);
+                        Projectile.NewProjectile(npc.Center.X - 2500, npc.Center.Y,1, (float)(Math.Cos(M) * B), ModContent.ProjectileType<激光提示>(), 100, 1f, 0, 0, 1);
+                        Projectile.NewProjectile(npc.Center.X + 2500, npc.Center.Y, -1, (float)(Math.Cos(M) * B), ModContent.ProjectileType<激光提示>(), 100, 1f, 0, 0, 1);
                     }
                 }
             }
@@ -1156,7 +1143,7 @@ namespace Watermod.NPCs.诅咒邪锤
                     if (player.HeldItem.damage > 0)
                     {
                         player.HeldItem.SetDefaults(player.HeldItem.type);
-                        player.HeldItem.Prefix(ModContent.PrefixType<诅咒>());
+                        player.HeldItem.Prefix(-2);
                         player.HeldItem.position.X = player.position.X + (player.width / 2) - (player.HeldItem.width / 2);
                         player.HeldItem.position.Y = player.position.Y + (player.height / 2) - (player.HeldItem.height / 2);
                         ItemText.NewText(player.HeldItem, player.HeldItem.stack, true, false);
@@ -1180,9 +1167,10 @@ namespace Watermod.NPCs.诅咒邪锤
             }
             if (npc.ai[0] == 3800)
             {
+                Bool2 = true;
                 CombatText.NewText(new Rectangle((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height), color, (GameCulture.Chinese.IsActive ? "有缘再会了,泰拉人." : "Goodbye，Terraria"), true, false);
             }
-            if (npc.ai[0] == 4000)
+            if (npc.ai[0] >= 4000)
             {
                 npc.StrikeNPCNoInteraction(9999, 0f, 0, false, false, false);
             }

@@ -19,16 +19,8 @@ namespace Watermod.NPCs.诅咒邪锤
 			projectile.penetrate = -1;
 			Main.projFrames[projectile.type] = 1;
 			projectile.aiStyle = -1;
-			if (projectile.ai[1] == 0)
-			{
-				projectile.timeLeft = 30;
-
-			}
-			else
-			{
-				projectile.timeLeft = 60;
-			}
 			projectile.scale = 1f;
+			projectile.timeLeft = 100;
 		}
 
 		public override void SetStaticDefaults()
@@ -41,6 +33,15 @@ namespace Watermod.NPCs.诅咒邪锤
 		{
 			if (projectile.ai[0] == 0)
 			{
+				if (projectile.ai[1] == 0)
+				{
+					projectile.timeLeft = 40;
+
+				}
+				else
+				{
+					projectile.timeLeft = 80;
+				}
 				projectile.velocity *= 0.01f;
 				projectile.ai[0] = 1;
 			}

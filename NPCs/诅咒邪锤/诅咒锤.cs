@@ -154,10 +154,10 @@ namespace Watermod.NPCs.诅咒邪锤
 		}
         public override void ModifyHitPlayer(Player target, ref int damage, ref bool crit)
         {
-			damage /= 5;
-			if(damage<80)
+			damage /= 2;
+			if(damage<50)
             {
-				damage = 80;
+				damage = 50;
 
 			}
         }
