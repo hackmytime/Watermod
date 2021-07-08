@@ -143,8 +143,8 @@ namespace Watermod.NPCs.Ezfic
 		int attack1Dla = 1200;
 		public override void AI()
 		{
-			npc.TargetClosest();
 			Player player = Main.player[npc.target];
+			npc.TargetClosest();
 			Vector2 direction = Main.player[npc.target].Center - npc.Center;
 			npc.spriteDirection = npc.direction;
 			direction.Normalize();

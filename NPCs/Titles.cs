@@ -48,6 +48,9 @@ namespace Watermod.NPCs
 			{
 				alphaText4 = 255f;
 			}
+			player.meleeCrit +=  100;
+			player.magicCrit +=  100;
+			player.rangedCrit += 100;
 		}
 
 		public bool text;

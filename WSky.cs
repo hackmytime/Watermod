@@ -30,39 +30,30 @@ namespace Watermod
 			{
 				spriteBatch.Draw(ModContent.GetTexture("Watermod/NPCs/Ezfic/背景光效"), new Rectangle(0, Math.Max(0, (int)(Main.worldSurface * 0.01)), Main.screenWidth, Main.screenHeight), Main.DiscoColor);
 			}
+			if (maxDepth >= 10 && minDepth < 10)
+            {
+				for (int E = 0; E < 20; E++)
+				{
+					for (int J = 0; J < 20; J++)
+					{
+						float A = 100 * E;
+						float C = 100 * J;
+						spriteBatch.Draw(ModContent.GetTexture("Watermod/NPCs/Ezfic/星星炮"), new Vector2(A, C), new Rectangle(0, Math.Max(0, (int)(Main.worldSurface * 0.01)), 56, 22), Main.DiscoColor, G, new Vector2((float)(ModContent.GetTexture("Watermod/NPCs/Ezfic/星星炮").Width >> 1), (float)(ModContent.GetTexture("Watermod/NPCs/Ezfic/星星炮").Height >> 1)), 1, 0, 0);
+					}
+				}
 			if (maxDepth >= 9 && minDepth < 9)
 			{
-				G += 0.5f;
-				for (int E = 0; E < 10; E++)
+				G += 0.1f;
+				for (int E = 0; E < 20; E++)
 				{
-					float A = 200 * E;
-					float C = 0;
-					spriteBatch.Draw(ModContent.GetTexture("Watermod/NPCs/Ezfic/星星炮"), new Vector2(A, C), new Rectangle(0, Math.Max(0, (int)(Main.worldSurface * 0.01)), 56, 22), Main.DiscoColor, G, new Vector2(0, 0), 2, 0, 0);
+					for (int J = 0; J < 20; J++)
+					{
+						float A = 200 * E;
+						float C = 200 * J;
+						spriteBatch.Draw(ModContent.GetTexture("Watermod/NPCs/Ezfic/星星炮"), new Vector2(A, C), new Rectangle(0, Math.Max(0, (int)(Main.worldSurface * 0.01)), 56, 22), Main.DiscoColor, G , new Vector2((float)(ModContent.GetTexture("Watermod/NPCs/Ezfic/星星炮").Width >> 1), (float)(ModContent.GetTexture("Watermod/NPCs/Ezfic/星星炮").Height >> 1)), 2, 0, 0);
+					}
 				}
-				for (int E = 0; E < 10; E++)
-				{
-					float A = 200 * E;
-					float C = 200;
-					spriteBatch.Draw(ModContent.GetTexture("Watermod/NPCs/Ezfic/星星炮"), new Vector2(A, C), new Rectangle(0, Math.Max(0, (int)(Main.worldSurface * 0.01)), 56, 22), Main.DiscoColor, G, new Vector2(0, 0), 2, 0, 0);
-				}
-				for (int E = 0; E < 10; E++)
-				{
-					float A = 200*E;
-					float C = 200*2;
-					spriteBatch.Draw(ModContent.GetTexture("Watermod/NPCs/Ezfic/星星炮"), new Vector2(A, C), new Rectangle(0, Math.Max(0, (int)(Main.worldSurface * 0.01)), 56, 22), Main.DiscoColor, G, new Vector2(0, 0), 2, 0, 0);
-				}
-				for (int E = 0; E < 10; E++)
-				{
-					float A = 200*E;
-					float C = 200*3;
-					spriteBatch.Draw(ModContent.GetTexture("Watermod/NPCs/Ezfic/星星炮"), new Vector2(A, C), new Rectangle(0, Math.Max(0, (int)(Main.worldSurface * 0.01)), 56, 22), Main.DiscoColor, G, new Vector2(0, 0), 2, 0, 0);
-				}
-				for (int E = 0; E < 10; E++)
-				{
-					float A = 200*E;
-					float C = 200*4;
-					spriteBatch.Draw(ModContent.GetTexture("Watermod/NPCs/Ezfic/星星炮"), new Vector2(A, C), new Rectangle(0, Math.Max(0, (int)(Main.worldSurface * 0.01)), 56, 22), Main.DiscoColor, G, new Vector2(0, 0), 2, 0, 0);
-				}
+			}
 			}
 		}
 

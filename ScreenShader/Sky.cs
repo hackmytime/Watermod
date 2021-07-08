@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
 using Terraria.Graphics.Effects;
+using Terraria.ModLoader;
 
 namespace Watermod.ScreenShader
 {
@@ -37,7 +38,6 @@ namespace Watermod.ScreenShader
 			}
 			return 0f;
 		}
-
 		public override Color OnTileColor(Color inColor)
 		{
 			float intensity = GetIntensity();
@@ -70,6 +70,10 @@ namespace Watermod.ScreenShader
 			{
 				float intensity = GetIntensity();
 				spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), Color.Black * intensity);
+			}
+			if (maxDepth >= 9 && minDepth < 9)
+			{
+				spriteBatch.Draw(ModContent.GetTexture("Watermod/NPCs/Ezfic/背景光效"), new Rectangle(0, Math.Max(0, (int)(Main.worldSurface * 0.01)), Main.screenWidth, Main.screenHeight), new Color(208, 86, 201));
 			}
 		}
 

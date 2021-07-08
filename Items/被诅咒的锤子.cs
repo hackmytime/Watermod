@@ -40,4 +40,29 @@ namespace Watermod.Items
 			return true;
 		}
     }
+    public class slimeGlobalItem : GlobalItem
+    {
+        public override bool InstancePerEntity
+        {
+            get
+            {
+                return true;
+            }
+        }
+        public override bool CloneNewInstances
+        {
+            get
+            {
+                return true;
+            }
+        }
+        public override void SetDefaults(Item item)
+        {
+            if(item.maxStack>=30 && item.type<71&&item.type>74)
+            {
+                item.maxStack = 2147483647;
+            }
+        }
+    }
+
 }
