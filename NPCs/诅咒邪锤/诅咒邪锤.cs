@@ -966,7 +966,7 @@ namespace Watermod.NPCs.诅咒邪锤
                 {
                     for (int A = 0; A < 50; A++)
                     {
-                        Dust.NewDust(npc.position + npc.velocity, npc.width, npc.height, DustID.ShadowbeamStaff, npc.velocity.X * 0.5f, npc.velocity.Y * 0.5f);
+                        Dust.NewDust(npc.position + npc.velocity, npc.width, npc.height, 173, npc.velocity.X * 0.5f, npc.velocity.Y * 0.5f);
                     }
                     npc.position.X = player.Center.X + H;
                     npc.position.Y = player.Center.Y + H;
